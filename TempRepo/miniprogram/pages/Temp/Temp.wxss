@@ -5,7 +5,7 @@ page {
 /**这里可以设计所有界面中都包含的控件的公共样式，但是要记住类名要写一致，
 否则无法调用，比如下面的类名就是每个页面的标题样式**/
 .viewTitle{
-    margin-top: 20px;
+    margin: 10px;
     height: 40px;
     text-align: center;
 }
@@ -46,8 +46,28 @@ page {
     margin-bottom: 16rpx;
     padding-left: 30rpx;
     padding-right: 30rpx;
+    display: flex;
+}
+.section__title1{
+    flex-direction: row ;
+    justify-content: flex-start;
+    margin-bottom: 16rpx;
+    padding-left: 30rpx;
 }
 .section_gap .section__title{
     padding-left: 0;
     padding-right: 0;
+}
+.wrapper {
+    padding: 5px;
+}
+.button{
+    margin-bottom: 5px;
+}
+.tempinp{
+    width: 35%;
+    background-color: #FFFFFF
+}
+.du{
+    margin-right: 180px;
 }

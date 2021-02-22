@@ -1,0 +1,8 @@
+<view  wx:for="{{ne}}">
+    <view class="tableviewcell">工号：{{item.id}}</view>
+    <view class="tableviewcell">体温：{{item.temp}}</view>
+    <view class="tableviewcell">地点：{{item.region}}</view>
+    <view class="tableviewcell">日期：{{item.Date}}</view>
+    <view class="tableviewcell">时间：{{item.time}}</view>
+    <view class="tableviewcell"></view>
+</view>
