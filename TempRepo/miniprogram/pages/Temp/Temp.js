@@ -124,39 +124,48 @@ var markersData = {
   formSubmit: function(e) {
     var that=this;
     console.log('form发生了submit事件，携带数据为：',this.data.temp)
-    if(this.data.temp!=""){
-      const db = wx.cloud.database()
-      db.collection('Temp').add({ //插入报名信息
-        data: {
-          id: this.data.id,
-          temp: this.data.temp,
-          region:this.data.region,
-          Date:this.data.Date,
-          time:this.data.time,
-          code:this.data.code,
-        },
-        success: function(res) {
-          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-          console.log("插入成功" + res)
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 2000
-          })
-          wx.navigateTo({
-            url: '/pages/lookform/lookform?form_id=' + that.data.id+'&&form_Date=' + that.data.Date
-            +'&&form_time=' + that.data.time,
-          })
-        },
-        fail: console.error
-      })
+    if(this.data.id!=""){
+      if(this.data.temp!=""){
+        const db = wx.cloud.database()
+        db.collection('Temp').add({ //插入报名信息
+          data: {
+            id: this.data.id,
+            temp: this.data.temp,
+            region:this.data.region,
+            Date:this.data.Date,
+            time:this.data.time,
+            code:this.data.code,
+          },
+          success: function(res) {
+            // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+            console.log("插入成功" + res)
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000
+            })
+            wx.navigateTo({
+              url: '/pages/lookform/lookform?form_id=' + that.data.id+'&&form_Date=' + that.data.Date
+              +'&&form_time=' + that.data.time,
+            })
+          },
+          fail: console.error
+        })
+      }else{
+        wx.showToast({
+          title: '操作失败！体温为空', // 标题
+          icon: 'none',  // 图标类型，默认success
+          duration: 1500  // 提示窗停留时间，默认1500ms
+        })
+      }
     }else{
       wx.showToast({
-        title: '操作失败！体温为空', // 标题
+        title: '提交失败！工号为空', // 标题
         icon: 'none',  // 图标类型，默认success
         duration: 1500  // 提示窗停留时间，默认1500ms
       })
     }
+    
     
   },
   //表单重置按钮
